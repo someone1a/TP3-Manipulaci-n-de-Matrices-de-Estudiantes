@@ -173,9 +173,16 @@ const estudiantes = [
 ];
 const mayoresEdad = (estudiantes) =>{return estudiantes.filter((estudiante)=> estudiante.edad > 18 )}
 console.log(mayoresEdad(estudiantes))
-const promedios = estudiantes.map((estudiante) => {
+let promediosGeneral = []
+const calculoPromedios = estudiantes.map((estudiante) => {
     let suma = estudiante.calificaciones.reduce((a, b) => a + b) 
     let promedio = parseInt(suma / estudiante.calificaciones.length) 
-    return {nombre: estudiante.nombre, promedio: promedio}
+    return promediosGeneral.push({nombre: estudiante.nombre, promedio: promedio})
 })
-console.log(promedios)
+console.log(promediosGeneral)
+const nombreEstudiantes = (estudiantes, promediosGeneral) =>{
+    estudiantes.forEach((estudiante, promedio) =>{
+        console.log(`Alumno: ${estudiante.nombre}, Edad: ${estudiante.edad}, Promedio: ${promedio}`)
+    })
+}
+console.log(nombreEstudiantes(estudiantes,promediosGeneral))
