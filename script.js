@@ -186,3 +186,8 @@ const nombreEstudiantes = (estudiantes, promediosGeneral) =>{
     })
 }
 console.log(nombreEstudiantes(estudiantes,promediosGeneral))
+const orderByAge = (estudiantes) =>{
+    estudiantes.sort((a,b)=>{ return a.edad - b.edad})
+    return estudiantes
+}
+console.log(orderByAge(estudiantes))
