@@ -201,5 +201,10 @@ const betterStudent = (estudiantes) => {
     }
     return console.log(`El mejor estudiante en la 2da materia es ${estudiante.nombre} de ${estudiante.edad} años con una nota de ${estudiante.calificaciones[1]}`)
 }
+const edadPromedio =(estudiantes)=>{
+    let suma = estudiantes.reduce((acumulador, estudiantes)=>acumulador+estudiantes.edad,0)
+    return parseInt(suma/estudiantes.length)
+}
 console.log(orderByAge(estudiantes))
 console.log(betterStudent(estudiantes))
+console.log(edadPromedio(estudiantes))
