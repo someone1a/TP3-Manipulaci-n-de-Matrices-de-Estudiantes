@@ -10,5 +10,4 @@
 6. Encuentra y muestra en la consola el estudiante con la calificación más alta en una asignatura específica (por ejemplo, la asignatura 2).
 7. Utilizando el método reduce, calcula la edad promedio de los estudiantes en la matriz estudiantes y muestra el resultado en la consola.
 8. Crea una nueva matriz llamada excelentesEstudiantes que contenga solo los estudiantes cuyo promedio de calificaciones sea igual o superior a 90.
-
 9. Muestra en la consola los resultados de cada operación junto con comentarios descriptivos que expliquen lo que se está haciendo en cada paso.

@@ -171,50 +171,67 @@ const estudiantes = [
     },
 
 ];
-const mayoresEdad = (estudiantes) => { return estudiantes.filter((estudiante) => estudiante.edad > 18) }
+// funcion que filtra a los estudiantes mayores de edad
+const mayoresEdad = (estudiantes) => {
+    return estudiantes.filter((estudiante) => estudiante.edad > 18)
+}
 console.log(mayoresEdad(estudiantes))
+
+// array que almacena los promedios generales de los estudiantes
 let promediosGeneral = []
+
+// funcion que Calcula el promedio de cada estudiante y lo almacena en el array promediosGeneral
 const calculoPromedios = estudiantes.map((estudiante) => {
     let suma = estudiante.calificaciones.reduce((a, b) => a + b)
     let promedio = parseFloat(suma / estudiante.calificaciones.length)
-    return promediosGeneral.push({ nombre: estudiante.nombre, promedio: promedio })
+    promediosGeneral.push({ nombre: estudiante.nombre, promedio: promedio })
 })
 console.log(promediosGeneral)
+
+// + función que muestra el nombre, la edad y el promedio de cada estudiante
 const nombreEstudiantes = (estudiantes, promediosGeneral) => {
     estudiantes.forEach((estudiante, promedio) => {
         console.log(`Alumno: ${estudiante.nombre}, Edad: ${estudiante.edad}, Promedio: ${promedio}`)
     })
 }
 console.log(nombreEstudiantes(estudiantes, promediosGeneral))
+
+// funcion que ordena a los estudiantes por edad
 const orderByAge = (estudiantes) => {
-    estudiantes.sort((a, b) => { return a.edad - b.edad })
+    estudiantes.sort((a, b) => a.edad - b.edad)
     return estudiantes
 }
+
+//  función que  encuentra al mejor estudiante en la segunda materia
 const betterStudent = (estudiantes) => {
     let mejorNota = 0
     let estudiante = ""
     for (let i = 0; i < estudiantes.length; i++) {
-        if (estudiantes[i].calificaciones[2 - 1] >= mejorNota) {
-            mejorNota = estudiantes[i].calificaciones[2 - 1]
+        if (estudiantes[i].calificaciones[1] >= mejorNota) {
+            mejorNota = estudiantes[i].calificaciones[1]
             estudiante = estudiantes[i]
         }
     }
-    return console.log(`El mejor estudiante en la 2da materia es ${estudiante.nombre} de ${estudiante.edad} años con una nota de ${estudiante.calificaciones[1]}`)
+    console.log(`El mejor estudiante en la 2da materia es ${estudiante.nombre} de ${estudiante.edad} años con una nota de ${estudiante.calificaciones[1]}`)
 }
-const edadPromedio =(estudiantes)=>{
-    let suma = estudiantes.reduce((acumulador, estudiantes)=>acumulador+estudiantes.edad,0)
-    return parseInt(suma/estudiantes.length)
-} 
-const betterStudents = (estudiantes, promediosGeneral)=>{
+
+// función que calcula la edad promedio de los estudiantes
+const edadPromedio = (estudiantes) => {
+    let suma = estudiantes.reduce((acumulador, estudiante) => acumulador + estudiante.edad, 0)
+    return parseInt(suma / estudiantes.length)
+}
+
+//  función que encuentra a los estudiantes con un promedio mayor o igual a 90
+const betterStudents = (estudiantes, promediosGeneral) => {
     let mejores = []
     for (let i = 0; i < estudiantes.length; i++) {
-        if (promediosGeneral[i] >= 90) {
-            mejores.push({ Estudiante: estudiantes[i].nombre, Promedio: promediosGeneral[i] })
+        if (promediosGeneral[i].promedio >= 90) {
+            mejores.push({ Estudiante: estudiantes[i].nombre, Promedio: promediosGeneral[i].promedio })
         }
     }
     return mejores
-    
 }
+
 console.log(orderByAge(estudiantes))
 console.log(betterStudent(estudiantes))
 console.log(edadPromedio(estudiantes))
