@@ -176,7 +176,7 @@ console.log(mayoresEdad(estudiantes))
 let promediosGeneral = []
 const calculoPromedios = estudiantes.map((estudiante) => {
     let suma = estudiante.calificaciones.reduce((a, b) => a + b)
-    let promedio = parseInt(suma / estudiante.calificaciones.length)
+    let promedio = parseFloat(suma / estudiante.calificaciones.length)
     return promediosGeneral.push({ nombre: estudiante.nombre, promedio: promedio })
 })
 console.log(promediosGeneral)
@@ -204,7 +204,18 @@ const betterStudent = (estudiantes) => {
 const edadPromedio =(estudiantes)=>{
     let suma = estudiantes.reduce((acumulador, estudiantes)=>acumulador+estudiantes.edad,0)
     return parseInt(suma/estudiantes.length)
+} 
+const betterStudents = (estudiantes, promediosGeneral)=>{
+    let mejores = []
+    for (let i = 0; i < estudiantes.length; i++) {
+        if (promediosGeneral[i] >= 90) {
+            mejores.push({ Estudiante: estudiantes[i].nombre, Promedio: promediosGeneral[i] })
+        }
+    }
+    return mejores
+    
 }
 console.log(orderByAge(estudiantes))
 console.log(betterStudent(estudiantes))
 console.log(edadPromedio(estudiantes))
+console.log(betterStudents(estudiantes, promediosGeneral))
