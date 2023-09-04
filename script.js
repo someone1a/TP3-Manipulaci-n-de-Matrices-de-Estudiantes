@@ -171,23 +171,35 @@ const estudiantes = [
     },
 
 ];
-const mayoresEdad = (estudiantes) =>{return estudiantes.filter((estudiante)=> estudiante.edad > 18 )}
+const mayoresEdad = (estudiantes) => { return estudiantes.filter((estudiante) => estudiante.edad > 18) }
 console.log(mayoresEdad(estudiantes))
 let promediosGeneral = []
 const calculoPromedios = estudiantes.map((estudiante) => {
-    let suma = estudiante.calificaciones.reduce((a, b) => a + b) 
-    let promedio = parseInt(suma / estudiante.calificaciones.length) 
-    return promediosGeneral.push({nombre: estudiante.nombre, promedio: promedio})
+    let suma = estudiante.calificaciones.reduce((a, b) => a + b)
+    let promedio = parseInt(suma / estudiante.calificaciones.length)
+    return promediosGeneral.push({ nombre: estudiante.nombre, promedio: promedio })
 })
 console.log(promediosGeneral)
-const nombreEstudiantes = (estudiantes, promediosGeneral) =>{
-    estudiantes.forEach((estudiante, promedio) =>{
+const nombreEstudiantes = (estudiantes, promediosGeneral) => {
+    estudiantes.forEach((estudiante, promedio) => {
         console.log(`Alumno: ${estudiante.nombre}, Edad: ${estudiante.edad}, Promedio: ${promedio}`)
     })
 }
-console.log(nombreEstudiantes(estudiantes,promediosGeneral))
-const orderByAge = (estudiantes) =>{
-    estudiantes.sort((a,b)=>{ return a.edad - b.edad})
+console.log(nombreEstudiantes(estudiantes, promediosGeneral))
+const orderByAge = (estudiantes) => {
+    estudiantes.sort((a, b) => { return a.edad - b.edad })
     return estudiantes
 }
+const betterStudent = (estudiantes) => {
+    let mejorNota = 0
+    let estudiante = ""
+    for (let i = 0; i < estudiantes.length; i++) {
+        if (estudiantes[i].calificaciones[2 - 1] >= mejorNota) {
+            mejorNota = estudiantes[i].calificaciones[2 - 1]
+            estudiante = estudiantes[i]
+        }
+    }
+    return console.log(`El mejor estudiante en la 2da materia es ${estudiante.nombre} de ${estudiante.edad} años con una nota de ${estudiante.calificaciones[1]}`)
+}
 console.log(orderByAge(estudiantes))
+console.log(betterStudent(estudiantes))
